@@ -73,10 +73,6 @@ public class Evento {
 		}
 	}
 
-	public void postiRimanenti() {
-		int postiR = getPostiTotali() - getPostiPrenotati();
-	}
-
 	public void disdisci(int annulaP) throws Exception {
 		if (this.data.isBefore(today)) {
 			throw new Exception("La data dell'evento era: " + getData().toString());
