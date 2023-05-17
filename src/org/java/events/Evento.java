@@ -9,7 +9,7 @@ public class Evento {
 	private int postiTotali;
 	private int postiPrenotati;
 	LocalDate today = LocalDate.now();
-	DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+	DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 	public Evento(String titolo, String data, int postiTotali, int postiPrenotati) throws Exception {
 

@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 
-	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
+		boolean done = true;
 		Evento evento1 = null;
-		while (true) {
+		while (done) {
 			Scanner input = new Scanner(System.in);
 			System.out.println("Ciao vuoi inserire un nuovo evento?");
 			System.out.println("1 - Si");
@@ -87,15 +87,21 @@ public class Main {
 								+ (evento1.getPostiTotali() - evento1.getPostiPrenotati()) + " posti disponibili, e "
 								+ evento1.getPostiPrenotati() + " posti prenotati.");
 					}
+						break;
+					case 2: {
+						done = false;
+						System.out.println("Ok nessun problema, alla prossima!");
+						input.close();
+
 					}
+					}
+
 				}
-				case 2: {
-					System.out.println("Ok nessun problema, alla prossima!");
-					input.close();
-				}
+
 				}
 			}
 			case 2: {
+				done = false;
 				System.out.println("Ok nessun problema, alla prossima!");
 				input.close();
 			}
