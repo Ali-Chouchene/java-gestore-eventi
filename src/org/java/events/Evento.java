@@ -1,6 +1,7 @@
 package org.java.events;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Evento {
 	private String titolo;
@@ -8,6 +9,7 @@ public class Evento {
 	private int postiTotali;
 	private int postiPrenotati;
 	LocalDate today = LocalDate.now();
+	DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/mm/yyyy");
 
 	public Evento(String titolo, String data, int postiTotali, int postiPrenotati) throws Exception {
 
@@ -41,7 +43,8 @@ public class Evento {
 	}
 
 	public void setData(String data) throws Exception {
-		LocalDate localDate = LocalDate.parse(data);
+		String formattedData = data.formatted(formatters);
+		LocalDate localDate = LocalDate.parse(formattedData);
 		if (localDate.isBefore(today)) {
 			throw new Exception("Hai inserito una data inferiore ad oggi: " + today.toString());
 		} else {
@@ -68,6 +71,10 @@ public class Evento {
 		} else {
 			this.postiPrenotati += prenotazioni;
 		}
+	}
+
+	public void postiRimanenti() {
+		int postiR = getPostiTotali() - getPostiPrenotati();
 	}
 
 	public void disdisci(int annulaP) throws Exception {
